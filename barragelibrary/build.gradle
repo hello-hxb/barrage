@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -28,4 +28,13 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
+}
+
+publish {
+    userOrg = 'hxb'
+    groupId = 'com.hxb'//
+    artifactId = 'barrage'//
+    publishVersion = '1.0.0'//
+    desc = 'this is a barrage layout '//
+    website = 'https://github.com/hello-hxb/barrage'//
 }

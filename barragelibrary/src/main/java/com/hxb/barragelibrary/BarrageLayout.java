@@ -31,8 +31,8 @@ import java.util.concurrent.ScheduledExecutorService;
 public class BarrageLayout extends RelativeLayout {
 
     public static final String TAG = "BarrageLayout";
-    private int mWidth = -1;    //控件宽
-    private int mHeight = -1;  //控件高
+    private int mWidth = -1;
+    private int mHeight = -1;
     private LinkedBlockingQueue<Object> mQueue = new LinkedBlockingQueue<>();
 
 
@@ -112,7 +112,7 @@ public class BarrageLayout extends RelativeLayout {
                     final Object entity = mQueue.take();
                     final CountDownLatch countDownLatch = new CountDownLatch(1);
 
-                    Log.d(TAG, "----------------将一条弹幕添加到BarrageLayout中------------------");
+
                     addView(entity, countDownLatch);
 
 
@@ -122,7 +122,7 @@ public class BarrageLayout extends RelativeLayout {
                     newInfo.barrageHeight = mBarrageView.getMeasuredHeight();
                     newInfo.y = -1;
 
-                    Log.d(TAG, "寻找弹幕的Y...,弹幕的高度为:"+newInfo.barrageHeight);
+
                     while (newInfo.y == -1) {
                         newInfo.y = getRandomY(newInfo.barrageHeight);
 
@@ -133,18 +133,18 @@ public class BarrageLayout extends RelativeLayout {
 
                             int dTop = Math.abs(newInfo.y - existentInfo.y);
                             if (newInfo.y <= existentInfo.y && dTop < newInfo.barrageHeight) {
-                                //在上面
+
                                 newInfo.y = -1;
                                 break;
                             } else if (newInfo.y >= existentInfo.y && dTop < existentInfo.barrageHeight) {
-                                //在下面
+
                                 newInfo.y = -1;
                                 break;
                             }
                         }
 
                     }
-                    Log.d(TAG, "找到了随机数Y: " + newInfo.y);
+
                     mInfoMap.put(mBarrageView, newInfo);
                     moveBarrage(entity, mBarrageView, newInfo);
                     mBarrageView = null;
@@ -168,7 +168,7 @@ public class BarrageLayout extends RelativeLayout {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                //显示弹幕
+
                 int barrageWidth = view.getMeasuredWidth();
                 view.setY(newInfo.y);
                 int flyTime = mAdapter.getFlyTime(entity, view);
@@ -192,7 +192,7 @@ public class BarrageLayout extends RelativeLayout {
                 anim.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        //动画结束了
+
                         BarrageLayout.this.removeView(view);
                         mAdapter.onViewRemoved(entity,view);
                     }
@@ -210,24 +210,19 @@ public class BarrageLayout extends RelativeLayout {
         boolean isRemoveFromMap;
     }
 
-    /**
-     * 加弹幕View添加到弹幕layout上
-     *
-     * @param entity
-     * @param countDownLatch
-     */
     private void addView(final Object entity, final CountDownLatch countDownLatch) {
         post(new Runnable() {
             @Override
             public void run() {
                 mBarrageView = mAdapter.getViewByEntity(entity);
-                //将弹幕View放在layout的最右边
+
                 mBarrageView.setX(mWidth);
                 addView(mBarrageView);
                 mAdapter.refreshView(entity, mBarrageView);
 
                 final ViewTreeObserver viewTreeObserver = mBarrageView.getViewTreeObserver();
                 viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @SuppressWarnings("deprecation")
                     @Override
                     public void onGlobalLayout() {
                         viewTreeObserver.removeGlobalOnLayoutListener(this);
