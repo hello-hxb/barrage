@@ -16,11 +16,11 @@
 ## 用法
 1. 在xml中引用
 		     
-		      <com.hxb.barragelibrary.BarrageLayout
-		        android:id="@+id/barrage_layout"
+		<com.hxb.barragelibrary.BarrageLayout
+			android:id="@+id/barrage_layout"
 		        android:layout_width="match_parent"
 		        android:layout_height="match_parent">
-		    </com.hxb.barragelibrary.BarrageLayout>
+		</com.hxb.barragelibrary.BarrageLayout>
 2. 设置adapter
 
         mBarrageLayout.setAdapter(new BarrageAdapter() {
@@ -60,14 +60,14 @@
     
 4. 根据不同的实体显示不同弹幕,比如
 
-	    	mBarrageLayout.showBarrage(barrageBean1);
+		mBarrageLayout.showBarrage(barrageBean1);
 	    	mBarrageLayout.showBarrage(barrageBean2);
 	 
 5. 在合适的位置停止工作,比如:
 
-	    	//activity 的 onDestroy方法中
-	    	protected void onDestroy() {
-	        	super.onDestroy();
-	        	mBarrageLayout.stop();
+		//activity 的 onDestroy方法中
+		protected void onDestroy() {
+			super.onDestroy();
+			mBarrageLayout.stop();
 	    	}
 
