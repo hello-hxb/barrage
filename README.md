@@ -1,8 +1,11 @@
 
 # barrage
 可以支持不同种类型的View,实现弹幕效果.
+## Compile
 
-##演示
+	compile 'com.hxb.barrage:1.0.0'
+ 
+## 演示
 
 实际效果比这个好
 
@@ -10,7 +13,7 @@
 
  ![image](https://github.com/hello-hxb/barrage/blob/master/barrage.gif)
  
-##用法
+## 用法
 1. 在xml中引用
 		     
 		      <com.hxb.barragelibrary.BarrageLayout
@@ -57,14 +60,14 @@
     
 4. 根据不同的实体显示不同弹幕,比如
 
-	    mBarrageLayout.showBarrage(barrageBean1);
-	    mBarrageLayout.showBarrage(barrageBean2);
+	    	mBarrageLayout.showBarrage(barrageBean1);
+	    	mBarrageLayout.showBarrage(barrageBean2);
 	 
-5.在合适的位置停止工作,比如:
+5. 在合适的位置停止工作,比如:
 
-	  //activity 的 onDestroy方法中
-	    protected void onDestroy() {
-	        super.onDestroy();
-	        mBarrageLayout.stop();
-	    }
+	    	//activity 的 onDestroy方法中
+	    	protected void onDestroy() {
+	        	super.onDestroy();
+	        	mBarrageLayout.stop();
+	    	}
 
