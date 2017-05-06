@@ -3,7 +3,7 @@
 可以支持不同种类型的View,实现弹幕效果.
 ## Compile
 
-	compile 'com.hxb.barrage:1.0.0'
+	compile 'com.hxb:barrage:1.0.0'
  
 ## 演示
 
