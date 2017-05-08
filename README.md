@@ -71,3 +71,4 @@
 			mBarrageLayout.stop();
 		}
 
+### QQ群  200697530 欢迎交流
