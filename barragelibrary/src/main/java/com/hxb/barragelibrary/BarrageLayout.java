@@ -95,7 +95,6 @@ public class BarrageLayout extends RelativeLayout {
             return;
         }
         mQueue.offer(entity);
-
     }
 
 
@@ -103,7 +102,6 @@ public class BarrageLayout extends RelativeLayout {
         if (mTakeExecutor != null) {
             return;
         }
-
         mTakeExecutor = Executors.newSingleThreadScheduledExecutor();
         Runnable runnable = new Runnable() {
             @Override
@@ -111,13 +109,8 @@ public class BarrageLayout extends RelativeLayout {
                 try {
                     final Object entity = mQueue.take();
                     final CountDownLatch countDownLatch = new CountDownLatch(1);
-
-
                     addView(entity, countDownLatch);
-
-
                     countDownLatch.await();
-
                     Info newInfo = new Info();
                     newInfo.barrageHeight = mBarrageView.getMeasuredHeight();
                     newInfo.y = -1;
@@ -168,7 +161,6 @@ public class BarrageLayout extends RelativeLayout {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-
                 int barrageWidth = view.getMeasuredWidth();
                 view.setY(newInfo.y);
                 int flyTime = mAdapter.getFlyTime(entity, view);
@@ -192,7 +184,6 @@ public class BarrageLayout extends RelativeLayout {
                 anim.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-
                         BarrageLayout.this.removeView(view);
                         mAdapter.onViewRemoved(entity,view);
                     }
@@ -204,7 +195,7 @@ public class BarrageLayout extends RelativeLayout {
     }
 
 
-    private class Info {
+    private static  class Info {
         int y;
         int barrageHeight;
         boolean isRemoveFromMap;
@@ -215,7 +206,6 @@ public class BarrageLayout extends RelativeLayout {
             @Override
             public void run() {
                 mBarrageView = mAdapter.getViewByEntity(entity);
-
                 mBarrageView.setX(mWidth);
                 addView(mBarrageView);
                 mAdapter.refreshView(entity, mBarrageView);
@@ -233,10 +223,6 @@ public class BarrageLayout extends RelativeLayout {
             }
         });
     }
-
-
-
-
 
     private int getRandomY(int barrageHeight) {
         Random random = new Random();
