@@ -7,7 +7,7 @@
  
 ## 演示
 
-实际效果比这个好
+实际效果比gif流畅
 
  ![image](https://github.com/hello-hxb/barrage/blob/master/barragelayout.png)
 
