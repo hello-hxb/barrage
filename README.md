@@ -3,11 +3,11 @@
 可以支持不同种类型的View,实现弹幕效果.
 ## Compile
 
-	compile 'com.hxb.barrage:1.0.0'
+	compile 'com.hxb:barrage:1.0.0'
  
 ## 演示
 
-实际效果比这个好
+实际效果比gif流畅
 
  ![image](https://github.com/hello-hxb/barrage/blob/master/barragelayout.png)
 
