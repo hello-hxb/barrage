@@ -1,9 +1,9 @@
 
 # barrage
 可以支持不同种类型的View,实现弹幕效果.
-## Compile
+## Gradle
 
-	compile 'com.hxb:barrage:1.0.0'
+	compile 'com.hxb:barrage:1.0.1'
  
 ## 演示
 
